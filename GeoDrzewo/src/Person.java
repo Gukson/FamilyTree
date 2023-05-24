@@ -35,7 +35,6 @@ public class Person {
     }
 
     public Person(String name, String surname, String FatherName, String PartnerName){
-
         this.Name = name;
         this.Surname = surname;
         this.sex = Sex(this.Name);
@@ -77,19 +76,29 @@ public class Person {
     }
 
     public boolean is_Son(String NameAndSurname){//Czy jest synem osoby podanej w nawiasach?
-        return ((this.Father !=null && this.Father.equals(main.lud.get(NameAndSurname))) || (this.Father !=null && this.Father.Spouse!=null) && this.Father.Spouse.equals(main.lud.get(NameAndSurname)))&&this.sex.equals("male");
+        Person father =  main.lud.get(NameAndSurname);
+        if (this.Father == null || this.Father.Spouse == null) return false;
+
+        return ((this.Father.equals(father)) || (this.Father.Spouse.equals(father))) &&this.sex.equals("male");
     }
 
     public boolean is_daughter(String NameAndSurname){//Czy jest córką osoby podanej w nawiasach?
-        return (this.Father !=null &&  (this.Father.equals(main.lud.get(NameAndSurname)) || (this.Father.Spouse!=null && this.Father.Spouse.equals(main.lud.get(NameAndSurname)))))&&this.sex.equals("female");
+        Person father =  main.lud.get(NameAndSurname);
+        if (this.Father == null || this.Father.Spouse == null) return false;
+
+        return ((this.Father.equals(father)) || (this.Father.Spouse.equals(father))) &&this.sex.equals("female");
     }
 
     public boolean is_brother(String NameAndSurname){//Czy jest bratem osoby podanej w nawiasach?
-        return main.lud.get(NameAndSurname).Father != null && (main.lud.get(NameAndSurname).Father.equals(this.Father) && this.sex.equals("male"));
+        Person osoba = main.lud.get(NameAndSurname);
+        if(osoba.Father == null) return false;
+        return osoba.Father.equals(this.Father) && this.sex.equals("male");
     }
 
-    public boolean is_sister(String NameAndSurname){//Czy jest córką osoby podanej w nawiasach?
-        return main.lud.get(NameAndSurname).Father != null && (main.lud.get(NameAndSurname).Father.equals(this.Father) && this.sex.equals("female"));
+    public boolean is_sister(String NameAndSurname){//Czy jest siostrą osoby podanej w nawiasach?
+        Person osoba = main.lud.get(NameAndSurname);
+        if(osoba.Father == null) return false;
+        return osoba.Father.equals(this.Father) && this.sex.equals("female");
     }
 
     public boolean is_GrandFather(String NameAndSurname){//Czy jest dziadkiem osoby podanej w nawiasach?
@@ -115,39 +124,29 @@ public class Person {
     }
 
     public boolean is_GrandSon(String NameAndSurname){//Czy jest wnukiem osoby podanej w nawiasach?
-
-
-        return (this.Father != null && this.Father.Father!=null && this.sex.equals("male") && this.Father.Father.equals(main.lud.get(NameAndSurname))) ||
-                (this.Father != null && this.Father.Father!=null && this.Father.Father.Spouse!=null && this.sex.equals("male") && this.Father.Father.Spouse.equals(main.lud.get(NameAndSurname))) ||
-                        (this.Father != null && this.Father.Spouse!=null && this.Father.Spouse.Father!=null  && this.sex.equals("male") &&
-                this.Father.Spouse.Father.equals(main.lud.get(NameAndSurname)) )||
-                        (this.Father != null && this.Father.Spouse!=null && this.Father.Spouse.Father!=null && this.Father.Spouse.Father.Spouse!=null  && this.sex.equals("male") &&
-                this.Father.Spouse.Father.Spouse.equals(main.lud.get(NameAndSurname)));
+        Person person = main.lud.get(NameAndSurname);
+        return (person.is_GrandFather(this.Name + " " + this.Surname) ||person.is_GrandMother(this.Name + " " + this.Surname)) && this.sex.equals("male");
     }
 
     public boolean is_GrandDaughter(String NameAndSurname){//Czy jest wnuczką osoby podanej w nawiasach?
-
-        return (this.Father != null && this.Father.Father!=null && this.sex.equals("female") && this.Father.Father.equals(main.lud.get(NameAndSurname))) ||
-                (this.Father != null && this.Father.Father!=null && this.Father.Father.Spouse!=null && this.sex.equals("female") && this.Father.Father.Spouse.equals(main.lud.get(NameAndSurname))) ||
-                (this.Father != null && this.Father.Spouse!=null && this.Father.Spouse.Father!=null  && this.sex.equals("female") &&
-                        this.Father.Spouse.Father.equals(main.lud.get(NameAndSurname)) )||
-                (this.Father != null && this.Father.Spouse!=null && this.Father.Spouse.Father!=null && this.Father.Spouse.Father.Spouse!=null  && this.sex.equals("female") &&
-                        this.Father.Spouse.Father.Spouse.equals(main.lud.get(NameAndSurname)));
+        Person person = main.lud.get(NameAndSurname);
+        return (person.is_GrandFather(this.Name + " " + this.Surname) ||person.is_GrandMother(this.Name + " " + this.Surname)) && this.sex.equals("female");
     }
 
     public boolean is_FatherInLaw(String NameAndSurname){//Czy jest teściem osoby podanej w nawiasach?
-        return  main.lud.get(NameAndSurname).Spouse != null && main.lud.get(NameAndSurname).Spouse.Father !=null &&
-                main.lud.get(NameAndSurname).Spouse.Father.equals(this);
+        Person person = main.lud.get(NameAndSurname);
+        if(person.Spouse == null || person.Spouse.Father ==null) return false;
+        return person.Spouse.Father.equals(this);
     }
 
     public boolean is_MotherInLaw(String NameAndSurname){//Czy jest teściową osoby podanej w nawiasach?
-        return main.lud.get(NameAndSurname).Spouse != null && main.lud.get(NameAndSurname).Spouse.Father != null && main.lud.get(NameAndSurname).Spouse.Father.Spouse!=null &&
-                main.lud.get(NameAndSurname).Spouse.Father.Spouse.equals(this);
+        Person person = main.lud.get(NameAndSurname);
+        if(person.Spouse == null || person.Spouse.Father ==null || person.Spouse.Father.Spouse == null) return false;
+        return person.Spouse.Father.Spouse.equals(this);
     }
 
     public boolean is_SisterInLaw(String NameAndSurname){//Czy jest bratową osoby podanej w nawiasach?
         if(this.Spouse == null || this.sex.equals("male")) return false;
-
         return this.Spouse.is_brother(NameAndSurname);
     }
 
