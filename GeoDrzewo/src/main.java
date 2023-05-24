@@ -16,7 +16,7 @@ public class main {
     public static void read_data(){
         //osoba;ojciec;partner
         try{
-            Scanner scanner = new Scanner(new File("persons.txt"));
+            Scanner scanner = new Scanner(new File("GeoDrzewo/persons.txt"));
             while (scanner.hasNextLine()) {
                 String data = scanner.nextLine();
                 String[] splitted = data.split(";");
