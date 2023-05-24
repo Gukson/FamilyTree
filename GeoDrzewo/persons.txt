@@ -1,0 +1,29 @@
+Pawel Markowski;Henryk Markowski;-
+Tomasz Markowski;Henryk Markowski;-
+Joanna Markowska;Henryk Markowski;-
+Henryk Markowski;Czeslaw Markowski;Mariola Markowska
+Mariola Markowska;Bogdan Waza;Henryk Markowski
+Halina Markowska;Czeslaw Markowski;-
+Ryszard Markowski;Czeslaw Markowski;-
+Agata Nosarzewska;Bogdan Waza;Krzysztof Nosarzewski
+Krzysztof Nosarzewski;-;Agata Nosarzewska
+Magda Sobel;Krzysztof Nosarzewski;Rafal Sobel
+Emilia Sobel;Krzysztof Nosarzewski;Marcin Sobel
+Rafal Sobel;-;Magda Sobel
+Marcin Sobel;-;Emilia Sobel
+Mateusz Nosarzewski;Krzysztof Nosarzewski;-
+Zuzanna Sobel;Rafal Sobel;-
+Wojciech Sobel;Rafal Sobel;-
+Oliwia Sobel;Marcin Sobel;-
+Bogdan Waza;Roman Waza;Ryszarda Waza
+Ryszarda Waza;Stefan Szyrma;Bogdan Waza
+Roman Waza;-;Weronika Waza
+Stefan Szyrma;-;Tekla Szyrma
+Weronika Waza;-;Roman Waza
+Tekla Szyrma;-;Stefan Szyrma
+Czeslaw Markowski;Feliks Szal;Emilia Markowska
+Emilia Markowska;Stanislaw Markowski;Czeslaw Markowski
+Feliks Szal;-;Jozefa Szal
+Stanislaw Markowski;-;Bronislawa Markowska
+Bronislawa Markowska;-;Stanislaw Markowski
+Jozefa Szal;-;Feliks Szal
