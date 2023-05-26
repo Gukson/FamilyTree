@@ -11,6 +11,7 @@ import static org.junit.Assert.assertEquals;
 public class main {
 
     public static HashMap<String, Person> lud = new HashMap<String, Person>();
+    public static HashMap<String, Person> funkcje = new HashMap<String, Person>();
 
 
     public static void read_data(){
